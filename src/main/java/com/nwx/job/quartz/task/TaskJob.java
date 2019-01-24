@@ -1,10 +1,12 @@
 package com.nwx.job.quartz.task;
 
+import com.nwx.job.quartz.service.TaskJobService;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Map;
 
 /**
  * @DESC: 任务执行器
@@ -15,9 +17,16 @@ import java.util.Date;
 @Component
 public class TaskJob {
 
-    @Scheduled(cron = "0 0/1 * * * ?")
+    private static Logger logger = Logger.getLogger(TaskJob.class);
+
+    @Autowired
+    private TaskJobService taskJobService;
+
+    @Scheduled(cron = "0 0/3 * * * ?")
     protected void execute(){
 
-        System.out.println("TaskJob start run。。。。。" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        Map<String,Object> user = taskJobService.findById("zyuc");
+
+        logger.info("user info :" + user.toString());
     }
 }

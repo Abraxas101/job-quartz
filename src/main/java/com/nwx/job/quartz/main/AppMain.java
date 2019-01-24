@@ -1,6 +1,7 @@
 package com.nwx.job.quartz.main;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.apache.log4j.Logger;
 
 /**
  * @DESC: 主方法
@@ -9,7 +10,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class AppMain {
 
+    private static Logger logger = Logger.getLogger(AppMain.class);
+
     public static void main(String[] args) {
+
+        logger.info("app run 。。。。");
         new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
     }
 }
