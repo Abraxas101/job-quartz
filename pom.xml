@@ -110,7 +110,9 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
+
+            <!-- 将依赖包打在jar包之外，生成独立的lib目录 -->
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
@@ -145,6 +147,32 @@
                                 ${project.build.directory}/lib
                             </outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!-- 将依赖包直接打进jar包中 -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <!-- 此处指定main方法入口的class -->
+                            <mainClass>com.nwx.job.quartz.main.AppMain</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
