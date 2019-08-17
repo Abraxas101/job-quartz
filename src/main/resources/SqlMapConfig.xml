@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 别名定义 -->
+    <typeAliases>
+        <package name="com.nwx.job.quartz.pojo"/>
+    </typeAliases>
+
+    <!-- 加载映射文件 -->
+    <mappers>
+        <mapper resource="mapping/SysUserMapper.xml"/>
+    </mappers>
+</configuration>

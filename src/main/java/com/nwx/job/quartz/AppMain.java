@@ -1,4 +1,4 @@
-package com.nwx.job.quartz.main;
+package com.nwx.job.quartz;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.apache.log4j.Logger;
